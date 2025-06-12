@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    font-family: 'Cormorant', sans-serif;
+}
+
+.kad-kawin {
+    background: url('img/flora-bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 13px;
+    margin: 5px;
+    padding: 0px;
+    z-index: 0;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.5));
+    position: relative;
+    width: 400px;
+    height: 560px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Untuk skrin telefon sangat kecil (maks 480px) */
+@media (max-width: 480px) {
+    .kad-kawin {
+        width: 98vw;
+        height: 560px;
+    }
+}
+
+.sakura-falling {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sakura {
+    background: linear-gradient(120deg, #805fb6, #FFC5D0) !important;
+    z-index: -999;
+    position: absolute; /* atau fixed jika perlu skrin penuh */
+}
+
+.konten {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.konten h2 {
+    /* font-family: 'Great Vibes', cursive; */
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.konten h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
