@@ -1,4 +1,4 @@
-var link = 'https://script.google.com/macros/s/AKfycbxRLSeGdwmuS61PaR_W_5_2NxhePOxPRXMOcfb2A9Dl-djeKrs1CPQUYCy0VOmA1JHtjg/exec';
+const link = 'https://script.google.com/macros/s/AKfycbxRLSeGdwmuS61PaR_W_5_2NxhePOxPRXMOcfb2A9Dl-djeKrs1CPQUYCy0VOmA1JHtjg/exec';
 
 document.getElementById("rsvp-submission").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -16,6 +16,7 @@ document.getElementById("rsvp-submission").addEventListener("submit", function(e
     // Gantikan URL di bawah dengan URL Web App Google Apps Script anda
     fetch(link, {
         method: "POST",
+        mode: "no-cors",
         body: form
     })
     .then(response => response.text())
@@ -62,6 +63,7 @@ e.preventDefault();
     // Gantikan URL di bawah dengan URL Web App Google Apps Script anda
     fetch(link, {
         method: "POST",
+        mode: "no-cors",
         body: form
     })
     .then(response => response.text())
@@ -91,3 +93,33 @@ e.preventDefault();
         submitBtn.disabled = false;
     });
 });
+
+// Fungsi untuk ambil dan papar data dari spreadsheet
+function fetchUcapanData() {
+  fetch(link)
+    .then(response => {
+      if (!response.ok) throw new Error("Network response was not ok");
+      return response.json(); // Jangkaan response JSON dari Apps Script
+    })
+    .then(data => {
+      console.log("Data dari Google Sheet:", data);
+
+      // Contoh: papar ke elemen HTML jika mahu
+      const container = document.getElementById("kad-ucapan");
+      if (container) {
+        container.innerHTML = data.map(row => `
+        <div class="ucapan">
+            <b>${row.nama}</b>
+            <p>${row.ucapan}</p>
+            <div class="divider"></div>
+        </div>
+        `).join("");
+      }
+    })
+    .catch(error => {
+      console.error("Ralat semasa ambil data:", error);
+    });
+}
+
+// Panggil fungsi bila dokumen sedia
+document.addEventListener("DOMContentLoaded", fetchUcapanData);
