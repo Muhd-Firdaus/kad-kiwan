@@ -4,6 +4,7 @@ document.getElementById("rsvp-submission").addEventListener("submit", function(e
     e.preventDefault();
 
     const form = new FormData(this);
+    const formObj = Object.fromEntries(form.entries());
     const btnText = document.getElementById("btn-text");
     const btnSpinner = document.getElementById("btn-spinner");
     const submitBtn = document.getElementById("submit-btn");
@@ -15,9 +16,12 @@ document.getElementById("rsvp-submission").addEventListener("submit", function(e
 
     // Gantikan URL di bawah dengan URL Web App Google Apps Script anda
     fetch(link, {
+        redirect: "follow",
         method: "POST",
-        mode: "no-cors",
-        body: form
+        headers: {
+            "content-type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(formObj),
     })
     .then(response => response.text())
     .then(result => {
@@ -51,6 +55,7 @@ document.getElementById("ucapan-submission").addEventListener("submit", function
 e.preventDefault();
 
     const form = new FormData(this);
+    const formObj = Object.fromEntries(form.entries());
     const btnText = document.getElementById("btn-text-ucapan");
     const btnSpinner = document.getElementById("btn-spinner-ucapan");
     const submitBtn = document.getElementById("submit-btn-ucapan");
@@ -62,9 +67,12 @@ e.preventDefault();
 
     // Gantikan URL di bawah dengan URL Web App Google Apps Script anda
     fetch(link, {
+        redirect: "follow",
         method: "POST",
-        mode: "no-cors",
-        body: form
+        headers: {
+            "content-type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(formObj),
     })
     .then(response => response.text())
     .then(result => {
@@ -77,7 +85,7 @@ e.preventDefault();
         });
 
         // Reset borang & butang
-        document.getElementById("rsvp-submission").reset();
+        document.getElementById("ucapan-submission").reset();
     })
     .catch(error => {
         console.log(error),

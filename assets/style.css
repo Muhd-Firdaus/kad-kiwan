@@ -7,6 +7,22 @@ body {
     font-family: 'Cormorant', sans-serif;
 }
 
+/* Untuk semua browser moden */
+/* html, body {
+  margin: 0;
+  padding: 0;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+body::-webkit-scrollbar {
+  display: none;
+} */
+
+.space {
+    height: 80px;
+}
+
 .kad-kawin {
     background: url('img/flora-bg.png');
     background-repeat: no-repeat;
@@ -25,20 +41,10 @@ body {
     align-items: center;
 }
 
-/* Untuk skrin telefon sangat kecil (maks 480px) */
-@media (max-width: 480px) {
-    .kad-kawin {
-        width: 98vw;
-        height: 560px;
-    }
-    .navigasi {
-        width: 98vw;
-    }
-}
-
 .sakura-falling {
     position: fixed;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
@@ -48,7 +54,8 @@ body {
 .sakura {
     background: linear-gradient(120deg, #805fb6, #FFC5D0) !important;
     z-index: 100;
-    position: absolute; /* atau fixed jika perlu skrin penuh */
+    position: absolute;
+    /* atau fixed jika perlu skrin penuh */
 }
 
 .konten {
@@ -117,7 +124,7 @@ body {
     padding: 15px;
     border-radius: 20px;
     background: #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 500px;
 }
 
@@ -143,7 +150,7 @@ body {
     border-radius: 20px;
     background: #ffffff;
     max-width: 500px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     /* font-family: serif; */
 }
 
@@ -165,7 +172,7 @@ body {
     width: 190px;
     max-width: 550px;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .aturcara span {
@@ -203,19 +210,21 @@ body {
     padding: 10px 30px;
     border-radius: 10px;
     background: #ffffff;
-    width: 200px;
+    width: 260px;
     height: 350px;
     max-width: 550px;
     position: relative;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     overflow-x: hidden;
     overflow-y: auto;
-    scrollbar-width: none;        /* Firefox */
+    scrollbar-width: none;
+    /* Firefox */
     -ms-overflow-style: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-    display: none;                /* Chrome, Safari, Edge */
+    display: none;
+    /* Chrome, Safari, Edge */
 }
 
 .ucapan p {
@@ -238,7 +247,7 @@ body {
     padding: 0 30px;
     font-family: 'Cormorant', sans-serif;
     font-size: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     color: #ffffff;
     background-color: #6a1b9a;
 }
@@ -270,7 +279,7 @@ body {
     width: 250px;
 }
 
-.doa p{
+.doa p {
     font-size: 15px;
 }
 
@@ -283,7 +292,8 @@ body {
     /* height: 40px; */
     height: auto;
     border-radius: 20px;
-    background: linear-gradient(0deg, #000000, #434343); /* gradient hitam */
+    background: linear-gradient(0deg, #000000, #434343);
+    /* gradient hitam */
     padding: 10px 0;
     text-align: center;
     justify-content: center;
@@ -325,7 +335,7 @@ body {
 }
 
 .custom-offcanvas-header {
-    box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .input-group-text .ikon {
@@ -352,11 +362,150 @@ form {
 .kandungan-kad .btn {
     border-radius: 50%;
     aspect-ratio: 1;
-    width: 40px; /* You can adjust this size */
+    width: 40px;
+    /* You can adjust this size */
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
-    font-size: 16px; /* Adjust icon size */
+    font-size: 16px;
+    /* Adjust icon size */
     color: #fff;
 }
+
+#gate-container {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+.door {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    /* background-color: #8b0000; */
+    transition: transform 2s ease-in-out;
+}
+
+.left-door {
+    left: 0;
+    border-right: 2px solid white;
+}
+
+.right-door {
+    right: 0;
+    border-left: 2px solid white;
+}
+
+.left-door, .right-door {
+    background: url('img/flora-bg.png');
+    background-size: contain;
+    background-position: center;
+    height: 100vh;
+}
+
+.open-left {
+    transform: translateX(-200%);
+}
+
+.open-right {
+    transform: translateX(200%);
+}
+
+.no-scroll {
+    /* height: 100vh; */
+    overflow: hidden;
+}
+
+.gate-seal {
+    position: absolute;
+    top: 50%;
+    left: -70px;
+    /* separuh daripada lebar seal */
+    transform: translateY(-50%);
+    width: 140px;
+    aspect-ratio: 1;
+    background: radial-gradient(circle, #6a1b9a 40%, #501475 60%);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-in-out;
+    z-index: 10001;
+}
+
+
+/* #audio-control {
+  position: fixed;
+  bottom: 90px;
+  right: 120px;
+  z-index: 999;
+} */
+
+/* Untuk skrin telefon sangat kecil (maks 480px) */
+@media (max-width: 480px) {
+    .kad-kawin {
+        width: 98vw;
+        height: 560px;
+    }
+
+    .navigasi {
+        width: 98vw;
+    }
+}
+
+@-webkit-keyframes moveUpDown {
+    0% {
+        transform: translateY(0) rotate(10deg);
+    }
+
+    25% {
+        transform: translateY(-2px);
+    }
+
+    50% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0) rotate(10deg);
+    }
+}
+
+@keyframes moveUpDown {
+    0% {
+        transform: translateY(0) rotate(10deg);
+    }
+
+    25% {
+        transform: translateY(-2px);
+    }
+
+    50% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    75% {
+        transform: translateY(-2px);
+    }
+
+    100% {
+        transform: translateY(0) rotate(10deg);
+    }
+}
+
+.seal-bouncing {
+  animation: moveUpDown 1s ease-in-out infinite;
+}
+
