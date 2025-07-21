@@ -86,6 +86,7 @@ e.preventDefault();
 
         // Reset borang & butang
         document.getElementById("ucapan-submission").reset();
+        fetchUcapanData();
     })
     .catch(error => {
         console.log(error),
@@ -114,6 +115,7 @@ function fetchUcapanData() {
 
       // Contoh: papar ke elemen HTML jika mahu
       const container = document.getElementById("kad-ucapan");
+      container.innerHTML = "";
       if (container) {
         container.innerHTML = data.map(row => `
         <div class="ucapan">
